@@ -1,56 +1,48 @@
-<h1 align="center"><a href="https://api-platform.com"><img src="https://api-platform.com/logo-250x250.png" alt="API Platform"></a></h1>
+### My react sandbox
+the react app is in the client folder 
+and the web page is https://localhost/email_messages/
 
-API Platform is a next-generation web framework designed to easily create API-first projects without compromising extensibility
-and flexibility:
-
-* Design your own data model as plain old PHP classes or [**import an existing one**](https://api-platform.com/docs/schema-generator)
-  from the [Schema.org](https://schema.org/) vocabulary.
-* **Expose in minutes a hypermedia REST or a GraphQL API** with pagination, data validation, access control, relation embedding,
-  filters and error handling...
-* Benefit from Content Negotiation: [GraphQL](https://graphql.org), [JSON-LD](https://json-ld.org), [Hydra](https://hydra-cg.com),
-  [HAL](https://github.com/mikekelly/hal_specification/blob/master/hal_specification.md), [JSONAPI](https://jsonapi.org/), [YAML](https://yaml.org/), [JSON](https://www.json.org/), [XML](https://www.w3.org/XML/) and [CSV](https://www.ietf.org/rfc/rfc4180.txt) are supported out of the box.
-* Enjoy the **beautiful automatically generated API documentation** ([Swagger](https://swagger.io/)/[OpenAPI](https://www.openapis.org/)).
-* Add [**a convenient Material Design administration interface**](https://api-platform.com/docs/admin) built with [React](https://reactjs.org/)
-  without writing a line of code.
-* **Scaffold fully functional Progressive-Web-Apps and mobile apps** built with [React](https://api-platform.com/docs/client-generator/react),
-[Vue.js](https://api-platform.com/docs/client-generator/vuejs) or [React Native](https://api-platform.com/docs/client-generator/react-native)
-thanks to [the client generator](https://api-platform.com/docs/client-generator) (a Vue.js generator is also available).
-* Install a development environment and deploy your project in production using **[Docker](https://api-platform.com/docs/distribution)**
-and [Kubernetes](https://api-platform.com/docs/deployment/kubernetes).
-* Easily add **[JSON Web Token](https://api-platform.com/docs/core/jwt) or [OAuth](https://oauth.net/) authentication**.
-* Create specs and tests with a **developer friendly API testing tool** on top of [Behat](https://behat.org/).
-
-[![GitHub Actions](https://github.com/api-platform/core/workflows/CI/badge.svg)](https://github.com/api-platform/core/actions?workflow=CI)
-[![Travis CI](https://travis-ci.org/api-platform/core.svg?branch=master)](https://travis-ci.org/api-platform/core)
-[![CircleCI](https://circleci.com/gh/api-platform/core/tree/master.svg?style=shield)](https://circleci.com/gh/api-platform/core/tree/master)
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/grwuyprts3wdqx5l/branch/master?svg=true)](https://ci.appveyor.com/project/dunglas/dunglasapibundle/branch/master)
-[![Codecov](https://codecov.io/gh/api-platform/core/branch/master/graph/badge.svg)](https://codecov.io/gh/api-platform/core/branch/master)
-[![SymfonyInsight](https://insight.symfony.com/projects/92d78899-946c-4282-89a3-ac92344f9a93/mini.svg)](https://insight.symfony.com/projects/92d78899-946c-4282-89a3-ac92344f9a93)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/api-platform/core/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/api-platform/core/?branch=master)
-
-The official project documentation is available **[on the API Platform website](https://api-platform.com)**.
-
-API Platform embraces open web standards (OpenAPI, JSON-LD, GraphQL, Hydra, HAL, JSONAPI, JWT, OAuth, HTTP...) and the
-[Linked Data](https://www.w3.org/standards/semanticweb/data) movement. Your API will automatically expose structured data
-in Schema.org / JSON-LD. It means that your API Platform application is usable **out of the box** with technologies of
-the semantic web.
-
-It also means that **your SEO will be improved** because **[Google leverages these formats](https://developers.google.com/search/docs/guides/intro-structured-data)**.
-
-Last but not least, the server component of API Platform is built on top of the [Symfony](https://symfony.com) framework,
-while client components leverage [React](https://reactjs.org/) (a [Vue.js](https://vuejs.org/) flavor is also available).
-It means that you can:
-
-* Use **thousands of Symfony bundles and React components** with API Platform.
-* Integrate API Platform in **any existing Symfony or React application**.
-* Reuse **all your Symfony and React skills**, benefit of the incredible amount of documentation available.
-* Enjoy the popular [Doctrine ORM](https://www.doctrine-project.org/projects/orm.html) (used by default, but fully optional:
-  you can use the data provider you want, including but not limited to MongoDB and Elasticsearch)
 
 ## Install
 
-[Read the official "Getting Started" guide](https://api-platform.com/docs/distribution).
+Sandbox is shipped with a [Docker](https://docker.com) setup that makes it easy to get a containerized development
+environment up and running. If you do not already have Docker on your computer, [it's the right time to install it](https://docs.docker.com/install/).
 
-## Credits
+On Mac, only [Docker for Mac](https://docs.docker.com/docker-for-mac/) is supported.
+Similarly, on Windows, only [Docker for Windows](https://docs.docker.com/docker-for-windows/) is supported. Docker Machine **is not** supported out of the box.
 
-Created by [Kévin Dunglas](https://dunglas.fr). Commercial support available at [Les-Tilleuls.coop](https://les-tilleuls.coop).
+Open a terminal, and navigate to the directory containing your project skeleton. Run the following command to start all
+services using [Docker Compose](https://docs.docker.com/compose/):
+
+    $ docker-compose pull # Download the latest versions of the pre-built images
+    $ docker-compose up -d # Running in detached mode
+    
+###### You'll need to add a security exception in your browser to accept the self-signed TLS certificate that has been generated for this container when installing the framework. Repeat this step for all other services available through HTTPS.
+
+This starts the following services:
+
+| Name     | Description                                                       | Port(s)                                                     | Environment(s)                                     |
+|----------|-------------------------------------------------------------------|-------------------------------------------------------------|----------------------------------------------------|
+| php      | The API with PHP, PHP-FPM 7.3, Composer and sensitive configs     | n/a                                                         | all                                                |
+| db       | A PostgreSQL database server                                      | 5432                                                        | all (prefer using a managed service in prod)       |
+| client   | A development server for the Progressive Web App                  | 443                                                         | dev (use a static website hosting service in prod) |
+| admin    | A development server for the admin                                | 444                                                         | dev (use a static website hosting service in prod) |
+| api      | The HTTP server for the API (NGINX)                               | n/a                                                         | all                                                |
+| vulcain  | The [Vulcain](https://vulcain.rocks) gateway                      | 8443                                                        | all                                                |
+| mercure  | The Mercure hub, [for real-time capabilities](../core/mercure.md) | 1337                                                        | all (prefer using the managed version in prod)     |
+
+
+
+
+
+## Troubleshooting
+
+##### Try to update dependencies 
+run shell command 
+
+    $ ./update-deps.sh 
+
+##### Editing Permissions on Linux
+
+If you work on linux and cannot edit some of the project files right after the first installation, you can run `docker-compose run --rm php chown -R $(id -u):$(id -g) .` to set yourself as owner of the project files that were created by the docker container.
+

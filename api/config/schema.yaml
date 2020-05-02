@@ -1,0 +1,34 @@
+author:  Maxim Yalagin <yalagin@gmail.com>
+id:
+    generationStrategy: uuid
+    writable: true
+rdfa:
+    #-  uri: "https://schema.org/docs/schema_org_rdfa.html" # Current version of Schema.org
+    #    format: rdfa
+    #-   uri: "https://raw.githubusercontent.com/schemaorg/schemaorg/master/data/ext/auto/auto.rdfa" # Experimental version of Schema.org extension: AUTO
+    #    format: rdfa
+    -   uri: "https://raw.githubusercontent.com/schemaorg/schemaorg/master/data/releases/3.7/all-layers.rdf" # Current version of Schema.org + all extensions
+        format: rdf
+    -   uri: "https://raw.githubusercontent.com/schemaorg/schemaorg/master/data/schema.rdfa" # Experimental version of Schema.org
+        format: rdfa
+types:
+    EmailMessage:
+        properties:
+            sender:  { range: "Text" }
+            toRecipient:  { range: "Text" }
+            about:  { range: "Text" }
+            text:  { range: "Text" }
+            dateReceived:  { range: "DateTime" }
+            attachments:  { range: "Boolean" }
+#            follows:  { range: "Person" }
+#            gender: ~
+#            knowsLanguage:
+#                range: "Text"
+#            nationality: { range: "Text" }
+#            weight: { range: "Integer" }
+#            height: { range: "Integer" }
+#            weightMeasurement: { range: "Text"}
+#            rangeMeasurement: { range: "Text"}
+#            caloriesMeasurement: { range: "Text"}
+#            user: {range: "User" ,cardinality: "(1..1)" , inversedBy: "person"}
+    

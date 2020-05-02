@@ -4,6 +4,6 @@ import App from './Welcome';
 
 test('renders API Platform title', () => {
   const { getByText } = render(<App />);
-  const strongElement = getByText(/API Platform/i);
+  const strongElement = getByText(/Database Archive/i);
   expect(strongElement).toBeInTheDocument();
 });

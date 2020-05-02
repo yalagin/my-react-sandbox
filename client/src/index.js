@@ -1,3 +1,4 @@
+// import 'react-dates/initialize';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
@@ -14,15 +15,21 @@ import {
 import 'bootstrap/dist/css/bootstrap.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import * as serviceWorker from './serviceWorker';
-// Import your reducers and routes here
 import Welcome from './Welcome';
+
+// import reducers
+import emailmessage from './reducers/emailmessage/';
+
+//import routes
+import emailmessageRoutes from './routes/emailmessage';
+
 
 const history = createBrowserHistory();
 const store = createStore(
   combineReducers({
     router: connectRouter(history),
     form,
-    /* Add your reducers here */
+    emailmessage,
   }),
   applyMiddleware(routerMiddleware(history), thunk)
 );
@@ -32,7 +39,7 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <Switch>
         <Route path="/" component={Welcome} strict={true} exact={true}/>
-        {/* Add your routes here */}
+        { emailmessageRoutes }
         <Route render={() => <h1>Not Found</h1>} />
       </Switch>
     </ConnectedRouter>

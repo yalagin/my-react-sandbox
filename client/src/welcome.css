@@ -63,9 +63,18 @@ body {
     transform: rotate(30deg);
     position: fixed;
     right: -190px;
-    top: 65px;
+    top: 120px;
+    overflow: hidden;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
     z-index: 5;
+}
+
+.welcome__logo {
+    width: 150px;
+    height: 150px ;
+    overflow: hidden;
+    vertical-align: middle;
+    margin: 30px 0px;
 }
 
 /***** MAIN *****/
