@@ -12,7 +12,7 @@
     "lodash.get": "^4.4.2",
     "lodash.has": "^4.5.2",
     "lodash.mapvalues": "^4.6.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "prop-types": "^15.6.2",
     "query-string": "^6.12.1",
     "react": "^16.13.1",
